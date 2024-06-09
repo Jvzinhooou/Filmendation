@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FilMendation</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/font-awesome.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
+      rel="stylesheet"
+    />
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+    <style>
+      .video-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .video-overlay.active {
+        display: flex;
+      }
+      .video-overlay iframe {
+        width: 80%;
+        height: 80%;
+      }
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="top">
+      <div class="container">
+        <div class="row top_1">
+          <div class="col-md-3">
+            <div class="top_1l pt-1">
+              <h3 class="mb-0">
+                <a class="text-white" href="/"
+                  ><i class="fa fa-video-camera col_red me-1"></i>
+                  FilMendation</a
+                >
+              </h3>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="top_1m">
+              <form action="/receber" method="post" class="formulario">
+                <!-- <label for="nome_filme">Nome:</label> -->
+                <input
+                  type="text"
+                  id="nome_filme"
+                  name="nome_filme"
+                  class="form-control bg-black text-white"
+                  placeholder="Escreva o nome do seu filme..."
+                  required
+                />
+                <button type="submit" class="btn bg_red rounded-0 border-0">
+                  Enviar
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="top_1r text-end">
+              <ul class="social-network social-circle mb-0">
+                <li>
+                  <a href="#" class="icoRss" title="Rss"
+                    ><i class="fa fa-instagram"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#" class="icoLinkedin" title="Linkedin"
+                    ><i class="fa fa-linkedin"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="header">
+      <nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
+        <div class="container">
+          <a class="navbar-brand text-white fw-bold" href="/"
+            ><i class="fa fa-video-camera col_red me-1"></i> FilMendation</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/time">Time</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Páginas
+                </a>
+                <ul
+                  class="dropdown-menu drop_1"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li><a class="dropdown-item" href="/time">Time</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <section id="center" class="center_home">
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="{{ url_for('static', filename='img/StarWars.jpg') }}"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-md-block">
+              <h1 class="font_60">
+                Star Wars <br />
+                The Last Jedi
+              </h1>
+              <h6 class="mt-3">
+                <span class="col_red me-3">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                </span>
+                4.5 (Imdb) Ano : 2017
+                <a
+                  class="bg_red p-2 pe-4 ps-4 ms-3 text-white d-inline-block"
+                  href="#"
+                  >Ação</a
+                >
+              </h6>
+              <p class="mt-3">
+                Após encontrar o mítico e recluso Luke Skywalker (Mark Hammil)
+                em uma ilha isolada, a jovem Rey (Daisy Ridley) busca entender o
+                balanço da Força a partir dos ensinamentos do mestre Jedi.
+                Paralelamente, o Primeiro Império de Kylo Ren (Adam Driver) se
+                reorganiza para enfrentar a Aliança Rebelde.
+              </p>
+              <p class="mb-2">
+                <span class="col_red me-1 fw-bold">Starring:</span> Mark Hammil,
+                Adam Driver, John Boyega and Daisy Ridley
+              </p>
+              <p class="mb-2">
+                <span class="col_red me-1 fw-bold">Genres:</span> Ação
+              </p>
+              <p><span class="col_red me-1 fw-bold">Duração:</span> 2h 32m</p>
+              <h6 class="mt-4">
+                <a class="button" href="#" onclick="openTrailer('Gn0WzX3OcAU')"
+                  ><i class="fa fa-play-circle align-middle me-1"></i>Assistir
+                  ao Trailer</a
+                >
+              </h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{{ url_for('static', filename='img/wp.jpg') }}"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-md-block">
+              <h1 class="font_60">
+                THOR <br />
+                RAGNAROK
+              </h1>
+              <h6 class="mt-3">
+                <span class="col_red me-3">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                </span>
+                4.5 (Imdb) Year : 2017
+                <a
+                  class="bg_red p-2 pe-4 ps-4 ms-3 text-white d-inline-block"
+                  href="#"
+                  >Ação/Ficção Cientifica
+                </a>
+              </h6>
+              <p class="mt-3">
+                O mundo de Thor está prestes a explodir. Seu irmão, o trapaceiro
+                Loki, tomou Asgard; a poderosa Hela dá as caras com a intenção
+                de tomar o trono para si. Thor, por sua vez, está aprisionado no
+                outro lado do universo.
+              </p>
+              <p class="mb-2">
+                <span class="col_red me-1 fw-bold">Starring:</span> Chris
+                Hemsworth, Tessa Thompson, Karl Urban
+              </p>
+              <p class="mb-2">
+                <span class="col_red me-1 fw-bold">Genres:</span> Ação
+              </p>
+              <p><span class="col_red me-1 fw-bold">Duração:</span> 2h 10m</p>
+              <h6 class="mt-4">
+                <a class="button" href="#" onclick="openTrailer('FMYVZ0JwfeI')"
+                  ><i class="fa fa-play-circle align-middle me-1"></i>Assistir
+                  ao Trailer</a
+                >
+              </h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{{ url_for('static', filename='img/av2.png') }}"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-md-block">
+              <h1 class="font_60">
+                AVATAR:<br />
+                O caminho Das Águas
+              </h1>
+              <h6 class="mt-3">
+                <span class="col_red me-3">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </span>
+                5 (Imdb) Ano : 2022
+                <a
+                  class="bg_red p-2 pe-4 ps-4 ms-3 text-white d-inline-block"
+                  href="#"
+                  >Ficção Cientifica</a
+                >
+              </h6>
+              <p class="mt-3">
+                Após formar uma família, Jake Sully e Ney'tiri fazem de tudo
+                para ficarem juntos. No entanto, eles devem sair de casa e
+                explorar as regiões de Pandora quando uma antiga ameaça
+                ressurge, e Jake deve travar uma guerra difícil contra os
+                humanos.
+              </p>
+              <p class="mb-2">
+                <span class="col_red me-1 fw-bold">Starring:</span>Zoe Saldaña,
+                Stephen Lang, Sam Worthington
+              </p>
+              <p class="mb-2">
+                <span class="col_red me-1 fw-bold">Genres:</span>Ficção
+                Cientifica/Ação
+              </p>
+              <p><span class="col_red me-1 fw-bold">Duração:</span> 3h 12m</p>
+              <h6 class="mt-4">
+                <a class="button" href="#" onclick="openTrailer('d9MyW72ELq0')"
+                  ><i class="fa fa-play-circle align-middle me-1"></i>Assistir
+                  ao Trailer</a
+                >
+              </h6>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="video-overlay" id="videoOverlay">
+      <span class="close-btn" onclick="closeTrailer()">&times;</span>
+      <iframe id="trailerVideo" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <script>
+      function openTrailer(videoId) {
+        var overlay = document.getElementById("videoOverlay");
+        var iframe = document.getElementById("trailerVideo");
+        iframe.src = "https://www.youtube.com/embed/" + videoId;
+        overlay.classList.add("active");
+      }
+
+      function closeTrailer() {
+        var overlay = document.getElementById("videoOverlay");
+        var iframe = document.getElementById("trailerVideo");
+        iframe.src = "";
+        overlay.classList.remove("active");
+      }
+    </script>
+  </body>
+</html>
