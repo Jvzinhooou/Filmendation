@@ -83,38 +83,11 @@ O código está organizado em funções claras e documentado para facilitar a co
 ## Uso de Inteligência Artificial
 
 ### Similaridade do Cosseno
-A técnica de similaridade do cosseno é usada para calcular a similaridade entre os filmes. Essa técnica é bastante comum em sistemas de recomendação, pois mede a similaridade entre dois vetores de maneira que se desconsidera a magnitude dos vetores, focando apenas na direção.
+A técnica de similaridade do cosseno é usada para calcular a similaridade entre os filmes. Essa técnica é bastante utilizadas em sistemas de recomendação, pois auxilia a medir a similaridade entre dois vetores de maneira que se desconsidera a magnitude dos vetores, focando apenas na direção.
 
 ### Bibliotecas Utilizadas
 - **Pandas**: Para manipulação de dados e criação de tabelas dinâmicas.
 - **Scikit-learn**: Para cálculo da similaridade do cosseno.
+- **Flask**: Para integração entre Front-End e Back-End, além do auxílio na criação das rotas e estilização da Web.
 
-## Apresentação em Slides
 
-Para uma apresentação clara e objetiva do projeto, recomenda-se a criação de slides que incluam os seguintes pontos:
-
-1. **Introdução ao Projeto**:
-   - Problema a ser resolvido.
-   - Objetivos do sistema de recomendação.
-
-2. **Metodologia**:
-   - Passos para captura e manipulação dos dados.
-   - Técnica de similaridade do cosseno.
-
-3. **Demonstração do Sistema**:
-   - Exemplo de entrada do usuário e resultados obtidos.
-   - Screenshot das interfaces web (páginas HTML).
-
-4. **Resultados e Conclusões**:
-   - Efetividade das recomendações.
-   - Possíveis melhorias futuras.
-
-5. **Código Fonte e Documentação**:
-   - Estrutura do código.
-   - Comentários e explicações detalhadas.
-
-6. **Uso de Inteligência Artificial**:
-   - Explicação da técnica de similaridade do cosseno.
-   - Benefícios da abordagem utilizada.
-
-Essa estrutura garante que todos os aspectos do projeto sejam abordados de forma clara e didática.
