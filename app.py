@@ -59,10 +59,12 @@ def submit():  # Def para o recebimento dos dados
     else:
         return render_template('resultado.html', tabela_html=None, input_usuario=input_usuario, erros=f'O filme "{input_usuario}" não foi encontrado na nossa base de dados.')
 
-#Criação de função para transformação da similaridade para porcentagem.
+# Criação de função para transformação da similaridade para porcentagem.
 def decimal_para_porcentagem(decimal):
     porcentagem = decimal * 100
     return f"{porcentagem:.2f}%"
+
+print("")
 
 #Subir alterações de código automaticamente.
 if __name__ == '__main__':
