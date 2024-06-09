@@ -64,7 +64,6 @@ def decimal_para_porcentagem(decimal):
     porcentagem = decimal * 100
     return f"{porcentagem:.2f}%"
 
-print("")
 
 #Subir alterações de código automaticamente.
 if __name__ == '__main__':
